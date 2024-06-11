@@ -70,20 +70,4 @@ public class NumberMeneger {
     public String setStringFile(Number line) {
         return String.format("%d/%d\n",line.getId(),line.getNum());
     }
-
-    public static void main(String[] args) {
-        NumberMeneger m = new NumberMeneger();
-        Scanner scanner = new Scanner(System.in);
-        m.getFile();
-        while (true) {
-            System.out.println("Введите цифру или 0 для выхода:");
-            int num = scanner.nextInt();
-            if (num == 0) break;
-            m.create(new Number(num));
-
-            for (Number number : m.getNumberList()) {
-                System.out.println(number);
-            }
-        }
-    }
 }

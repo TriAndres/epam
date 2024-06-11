@@ -3,7 +3,7 @@ package ru.practicum.menu;
 import ru.practicum.console.Console;
 import ru.practicum.factory.NumberFactory;
 
-public class NumberMenu implements Menu{
+public class NumberMenu implements Menu {
     private final NumberFactory numberFactory;
 
     public NumberMenu(NumberFactory numberFactory) {
@@ -24,24 +24,28 @@ public class NumberMenu implements Menu{
     @Override
     public void menu() {
         System.out.println("""
-                    \nВведите действие:
-                    \t1 - добавить
-                    \t2 - показать список
-                    \t3 - очистить
-                    \t0 - выход из меню
-                    """);
+                \nВведите действие:
+                \t1 - добавить цифру
+                \t2 - добавить список
+                \t3 - показать список
+                \t4 - очистить
+                \t0 - выход из меню
+                """);
     }
 
     @Override
     public void select(int num) {
         switch (num) {
             case 1:
-                numberFactory.createRandomNum();
+                numberFactory.createNum();
                 break;
             case 2:
-                numberFactory.show();
+                numberFactory.createRandomNum();
                 break;
             case 3:
+                numberFactory.show();
+                break;
+            case 4:
                 numberFactory.clear();
                 break;
             default:

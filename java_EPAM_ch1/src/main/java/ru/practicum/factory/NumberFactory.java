@@ -13,6 +13,11 @@ public class NumberFactory {
         this.numberMeneger = numberMeneger;
     }
 
+    public void createNum() {
+        System.out.println("Введите цифру:");
+        numberMeneger.create(new Number(Console.getInteger()));
+        System.out.println("Записано");
+    }
     public void createRandomNum() {
         System.out.println("Введите количество цифр:");
         int size = Console.getInteger();
