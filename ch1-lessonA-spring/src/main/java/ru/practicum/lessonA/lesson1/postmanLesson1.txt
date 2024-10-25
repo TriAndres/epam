@@ -1,0 +1,10 @@
+POST
+http://localhost:8080/hello
+
+{
+    "name": "Andrei"
+}
+
+------------------------------------
+GET
+http://localhost:8080/hello
