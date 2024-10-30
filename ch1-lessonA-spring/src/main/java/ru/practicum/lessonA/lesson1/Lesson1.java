@@ -3,7 +3,7 @@ package ru.practicum.lessonA.lesson1;
 import lombok.Data;
 
 @Data
-public class User {
+public class Lesson1 {
     private Long id;
     private String name;
 }

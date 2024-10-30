@@ -1,0 +1,8 @@
+POST
+http://localhost:8080/lesson1
+{
+    "name": "Andrei"
+}
+
+GET
+http://localhost:8080/lesson1

@@ -1,0 +1,15 @@
+
+POST
+http://localhost:8080/lesson2
+{
+    "name": "Andrei"
+}
+
+GET
+http://localhost:8080/lesson2?reverse=reverse
+
+GET
+http://localhost:8080/lesson2?reverse=notreverse
+
+GET
+http://localhost:8080/lesson2/1

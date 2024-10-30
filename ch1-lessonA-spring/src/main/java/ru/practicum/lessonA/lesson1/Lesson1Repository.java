@@ -6,16 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class UserRepository {
-    private final Map<Long, User> userMap = new HashMap<>();
+public class Lesson1Repository {
+    private final Map<Long, Lesson1> userMap = new HashMap<>();
 
-    public User createHello(User user) {
+    public Lesson1 lesson1Create(Lesson1 user) {
         user.setId(getNextId());
         userMap.put(user.getId(), user);
         return user;
     }
 
-    public Collection<User> usersShowAll() {
+    public Collection<Lesson1> lesson1ShowAll() {
         return userMap.values();
     }
 
