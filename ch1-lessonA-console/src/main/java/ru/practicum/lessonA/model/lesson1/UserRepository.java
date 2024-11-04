@@ -1,7 +1,5 @@
 package ru.practicum.lessonA.model.lesson1;
 
-import ru.practicum.lessonA.model.lesson2.Argument;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

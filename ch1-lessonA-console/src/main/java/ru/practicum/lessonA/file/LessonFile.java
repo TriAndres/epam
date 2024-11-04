@@ -28,4 +28,17 @@ public class LessonFile {
         }
         return list;
     }
+
+    public ArrayList<String> read2(String file) {
+        ArrayList<String> list = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                list.add(line);
+            }
+        } catch (IOException e) {
+            e.fillInStackTrace();
+        }
+        return list;
+    }
 }
