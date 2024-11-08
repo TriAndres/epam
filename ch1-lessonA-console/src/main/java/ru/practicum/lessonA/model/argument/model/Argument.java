@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.model.lesson2;
+package ru.practicum.lessonA.model.argument.model;
 
 public class Argument {
     private Long id;

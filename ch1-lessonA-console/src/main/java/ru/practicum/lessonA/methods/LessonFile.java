@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.file;
+package ru.practicum.lessonA.methods;
 
 import java.io.*;
 import java.util.ArrayList;
