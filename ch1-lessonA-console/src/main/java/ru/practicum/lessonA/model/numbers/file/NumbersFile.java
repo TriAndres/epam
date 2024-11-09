@@ -1,12 +1,13 @@
-package ru.practicum.lessonA.model.numbers.repository;
+package ru.practicum.lessonA.model.numbers.file;
 
 import ru.practicum.lessonA.model.numbers.model.Numbers;
+import ru.practicum.lessonA.model.numbers.repository.NumbersRepositoryAble;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 
-public class NumbersFile extends NumbersRepository {
+public class NumbersFile extends NumbersRepositoryAble {
     private final String file;
 
     private NumbersFile(String file) {
@@ -29,9 +30,34 @@ public class NumbersFile extends NumbersRepository {
     }
 
     @Override
-    public void numberCreate(Numbers number) {
-        super.numberCreate(number);
+    public Numbers numberCreate(Numbers number) {
+        Numbers numbers = super.numberCreate(number);
         save();
+        return numbers;
+    }
+
+    @Override
+    public boolean containsKey(long id) {
+        return super.containsKey(id);
+    }
+
+    @Override
+    public Numbers findById(long id) {
+        Numbers numbers = super.findById(id);
+        save();
+        return numbers;
+    }
+
+    @Override
+    public void deleteId(long id) {
+        save();
+        super.deleteId(id);
+    }
+
+    @Override
+    public void clear() {
+        save();
+        super.clear();
     }
 
     public static NumbersFile loadFromFile(String files) {
@@ -40,7 +66,7 @@ public class NumbersFile extends NumbersRepository {
             String line = null;
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split("/");
-                service.numberCreate(new Numbers(Long.valueOf(row[0]), Long.valueOf(row[1])));
+                service.numberCreate(new Numbers(Long.valueOf(row[0]), Integer.valueOf(row[1])));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

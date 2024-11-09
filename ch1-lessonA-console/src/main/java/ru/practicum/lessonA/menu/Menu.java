@@ -4,6 +4,8 @@ package ru.practicum.lessonA.menu;
 import java.util.Scanner;
 
 import static ru.practicum.lessonA.model.argument.controller.ArgumentController.argument;
+import static ru.practicum.lessonA.model.numbers.controller.NumbersController.numbersLesson3;
+import static ru.practicum.lessonA.model.numbers.controller.NumbersController.numbersLesson5;
 
 public class Menu {
     private final Scanner scanner = new Scanner(System.in);
@@ -41,6 +43,12 @@ public class Menu {
                 break;
             case "2":
                 argument().reverse();
+                break;
+            case "3":
+                numbersLesson3().lesson3();
+                break;
+            case "5":
+                numbersLesson5().lesson5();
                 break;
             default:
                 System.out.println("Выберите предложеное действие 1 и 2");

@@ -2,14 +2,14 @@ package ru.practicum.lessonA.model.numbers.model;
 
 public class Numbers {
     private Long id;
-    private Long num;
+    private Integer num;
 
-    public Numbers(Long id, Long num) {
+    public Numbers(Long id, Integer num) {
         this.id = id;
         this.num = num;
     }
 
-    public Numbers(Long num) {
+    public Numbers(Integer num) {
         this.num = num;
     }
 
@@ -24,11 +24,11 @@ public class Numbers {
         this.id = id;
     }
 
-    public Long getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(Long num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 }

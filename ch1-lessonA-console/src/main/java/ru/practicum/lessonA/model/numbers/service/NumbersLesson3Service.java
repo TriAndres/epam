@@ -1,38 +1,40 @@
 package ru.practicum.lessonA.model.numbers.service;
 
+import ru.practicum.lessonA.model.numbers.file.NumbersFile;
 import ru.practicum.lessonA.model.numbers.model.Numbers;
-import ru.practicum.lessonA.model.numbers.repository.NumbersFile;
 
 import java.util.Random;
-import java.util.Scanner;
 
-import static ru.practicum.lessonA.model.numbers.repository.NumbersFile.loadFromFile;
-import static ru.practicum.lessonA.model.numbers.service.Console.*;
+import static ru.practicum.lessonA.methods.console.Console.getInteger;
+import static ru.practicum.lessonA.methods.console.Console.getString;
+import static ru.practicum.lessonA.model.numbers.file.NumbersFile.loadFromFile;
 
 /*
 3. Вывести заданное количество случайных чисел с переходом и без перехода
 на новую строку.
  */
-public class NumbersService {
-    private final String files = "ch1-lessonA-console\\src\\main\\java\\ru\\practicum\\lessonA\\model\\numbers\\repository\\Numbers.txt";
-    private final NumbersFile file = loadFromFile(files);
+public class NumbersLesson3Service {
+    private final NumbersFile file;
 
-    public static void main(String[] args) {
-        NumbersService s = new NumbersService();
-        s.setListNumber();
-        s.show();
+    public NumbersLesson3Service(NumbersFile file) {
+        this.file = file;
     }
 
-    public void save() {
-        System.out.println("Введите цифру:");
-        file.numberCreate(new Numbers(getLong()));
-        System.out.println("Записано.");
+    public void lesson3() {
+        file.clear();
+        setListNumber();
+        System.out.println("Вывод чисел без перехода на новую строку.");
+        show(0);
+        System.out.println("Введите количество цифр в строке:");
+        int lines = getInteger();
+        System.out.println("Вывод количество случайных чисел с переходом на новую строку, через " + lines + " чисел.");
+        show(lines);
     }
 
-    public void setListNumber() {
+    private void setListNumber() {
         int size = 0;
-        long from = 0L;
-        long to = 0L;
+        int from = 0;
+        int to = 0;
         System.out.println("Введите в формате количество/от/до случайных чисел:\n" +
                 "пример:100/30/99");
         String[] line = null;
@@ -40,7 +42,6 @@ public class NumbersService {
         while (true) {
             text = getString();
             line = text.split("/");
-
             if (line.length == 3) {
                 break;
             }
@@ -48,20 +49,16 @@ public class NumbersService {
         }
         if (Integer.parseInt(line[0]) > 0 && Integer.parseInt(line[1]) > 0 && Integer.parseInt(line[2]) > Integer.parseInt(line[1])) {
             size = Integer.parseInt(line[0]);
-            from = Long.parseLong(line[1]);
-            to = Long.parseLong(line[2]);
+            from = Integer.parseInt(line[1]);
+            to = Integer.parseInt(line[2]);
             for (int i = 1; i <= size; i++) {
-                file.numberCreate(new Numbers(from + new Random().nextLong(to - from)));
+                file.numberCreate(new Numbers(getNextId(), from + new Random().nextInt(to - from)));
             }
             System.out.println("записано");
         }
-        System.out.println("пример ввода:100/30/99");
-
     }
 
-    public void show() {
-        System.out.println("Введите количество цифр в строке:");
-        int line = getInteger();
+    private void show(int line) {
         System.out.println("Вывод: id/num.");
         int count = 0;
         for (Numbers number : file.numberGetAll()) {
@@ -73,5 +70,14 @@ public class NumbersService {
             }
         }
         System.out.println("\nСписок выведен.");
+    }
+
+    private long getNextId() {
+        long currentMaxId = file.numberGetAll()
+                .stream()
+                .mapToLong(Numbers::getId)
+                .max()
+                .orElse(0);
+        return ++currentMaxId;
     }
 }

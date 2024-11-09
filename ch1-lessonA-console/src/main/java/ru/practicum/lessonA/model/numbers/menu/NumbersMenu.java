@@ -2,11 +2,7 @@ package ru.practicum.lessonA.model.numbers.menu;
 
 import ru.practicum.lessonA.model.numbers.controller.NumbersController;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static ru.practicum.lessonA.model.numbers.service.Console.getString;
+import static ru.practicum.lessonA.methods.console.Console.getString;
 
 public class NumbersMenu {
 
@@ -31,19 +27,19 @@ public class NumbersMenu {
     }
 
     public void select(String line) {
-        switch (line) {
-            case "1":
-                NumbersController.game().save();
-                break;
-            case "2":
-                NumbersController.game().setListNumber();
-                break;
-            case "3":
-                NumbersController.game().show();
-                break;
-            default:
-                System.out.println("Введите предлагаемые действия");
-                break;
-        }
+//        switch (line) {
+//            case "1":
+//                NumbersController.game().save();
+//                break;
+//            case "2":
+//                NumbersController.game().setListNumber();
+//                break;
+//            case "3":
+//                NumbersController.game().show();
+//                break;
+//            default:
+//                System.out.println("Введите предлагаемые действия");
+//                break;
+//        }
     }
 }

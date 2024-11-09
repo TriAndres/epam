@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.model.numbers.service;
+package ru.practicum.lessonA.methods.console;
 
 import java.util.Scanner;
 

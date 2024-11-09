@@ -10,29 +10,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ArgumentFile extends ArgumentRepositoryAble {
     private final String file;
-    //ch1-lessonA-console\src\main\java\ru\practicum\lessonA\model\argument\file\ArgumentFile.txt
+
     public ArgumentFile(String file) {
         this.file = file;
     }
 
-//    public static void main(String[] args) {
-//        String file = "ch1-lessonA-console\\src\\main\\java\\ru\\practicum\\lessonA\\model\\argument\\file\\ArgumentFile.txt";
-//        ArgumentFile af = loadFromFile(file);
-//        af.create(new Argument(1L,"12"));
-//        af.create(new Argument(2L,"12"));
-//        af.create(new Argument(3L,"12"));
-//
-//        for (Argument argument : af.getArgumentAll()) {
-//            System.out.println(argument.getId() + "/" + argument.getArgument());
-//        }
-//        System.out.println("/////////////////////////");
-//        Argument arg = af.findById(1);
-//        System.out.println(arg.getId() + "//" + arg.getArgument());
-//        af.deleteById(3);
-//        for (Argument argument : af.getArgumentAll()) {
-//            System.out.println(argument.getId() + "/" + argument.getArgument());
-//        }
-//    }
     private void save() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, UTF_8))) {
             for (Argument argument : getArgumentAll()) {
