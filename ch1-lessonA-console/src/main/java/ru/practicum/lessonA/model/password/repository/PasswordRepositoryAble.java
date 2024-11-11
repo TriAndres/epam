@@ -2,11 +2,15 @@ package ru.practicum.lessonA.model.password.repository;
 
 import ru.practicum.lessonA.model.password.model.Password;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PasswordRepositoryAble implements PasswordRepository {
     private final Map<Long, Password> passwordMap = new HashMap<>();
+
+    @Override
+    public Collection<Password> getByAll() {
+        return new ArrayList<>(passwordMap.values());
+    }
 
     @Override
     public Password create(Password password) {

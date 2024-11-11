@@ -7,28 +7,47 @@ import java.util.Random;
 
 import static ru.practicum.lessonA.methods.console.Console.getInteger;
 import static ru.practicum.lessonA.methods.console.Console.getString;
-import static ru.practicum.lessonA.model.numbers.file.NumbersFile.loadFromFile;
 
+
+public class NumbersLessonService {
+    private final NumbersFile file;
+
+    public NumbersLessonService(NumbersFile file) {
+        this.file = file;
+    }
 /*
 3. Вывести заданное количество случайных чисел с переходом и без перехода
 на новую строку.
- */
-public class NumbersLesson3Service {
-    private final NumbersFile file;
-
-    public NumbersLesson3Service(NumbersFile file) {
-        this.file = file;
-    }
-
+*/
     public void lesson3() {
         file.clear();
         setListNumber();
-        System.out.println("Вывод чисел без перехода на новую строку.");
+        System.out.println("Вывод количество случайных чисел без переходом на новую строку.");
         show(0);
         System.out.println("Введите количество цифр в строке:");
         int lines = getInteger();
         System.out.println("Вывод количество случайных чисел с переходом на новую строку, через " + lines + " чисел.");
         show(lines);
+    }
+/*
+5. Ввести целые числа как аргументы командной строки, подсчитать их сум-
+мы и произведения. Вывести результат на консоль.
+ */
+    public void lesson5() {
+        file.clear();
+        int number = 0;
+        int sum = 0;
+        int mull = 1;
+        while (number != -1) {
+            System.out.println("Введите цифру:");
+            number = getInteger();
+            file.numberCreate(new Numbers(getNextId(), number));
+            sum += number;
+            mull *= number;
+            System.out.println("sum = " + sum);
+            System.out.println("mull = " + mull);
+        }
+        System.out.println("выход из цикла.");
     }
 
     private void setListNumber() {

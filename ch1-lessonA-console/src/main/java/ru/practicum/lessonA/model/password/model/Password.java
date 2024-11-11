@@ -7,7 +7,7 @@ public class Password {
     private String login;
     private String password;
     private String name;
-    private LocalDateTime time;
+    private String localDateTime;
     private Integer interval;
 
     public Password(String login, String password) {
@@ -15,12 +15,12 @@ public class Password {
         this.password = password;
     }
 
-    public Password(Long id, String login, String password, String name, LocalDateTime time, Integer interval) {
+    public Password(Long id, String login, String password, String name, String localDateTime, Integer interval) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
-        this.time = time;
+        this.localDateTime = localDateTime;
         this.interval = interval;
     }
 
@@ -56,12 +56,12 @@ public class Password {
         this.name = name;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public String getLocalDateTime() {
+        return localDateTime;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setLocalDateTime(String localDateTime) {
+        this.localDateTime = localDateTime;
     }
 
     public Integer getInterval() {
