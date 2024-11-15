@@ -1,5 +1,7 @@
 package ru.practicum.lessonA.menu;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 import static ru.practicum.lessonA.model.argument.controller.ArgumentController.argument;
@@ -46,11 +48,17 @@ public class Menu {
             case "3":
                 numbersLesson().lesson3();
                 break;
+            case "4":
+                System.out.println("в разработке");;
+                break;
             case "5":
                 numbersLesson().lesson5();
                 break;
+            case "6":
+                System.out.println("в разработке");
+                break;
             default:
-                System.out.println("Выберите предложеное действия");
+                System.out.println("Выберите предложеные действия");
                 break;
 
         }

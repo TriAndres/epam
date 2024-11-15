@@ -17,6 +17,7 @@ public class PasswordFile extends PasswordRepositoryAble {
     public void save() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
             for (Password password : getByAll()) {
+                if (password.getInterval() == null) password.setInterval(0);
                 writer.write(String.join("/",
                         String.valueOf(password.getId()),
                         password.getLogin(),
@@ -25,6 +26,7 @@ public class PasswordFile extends PasswordRepositoryAble {
                         password.getLocalDateTime(),
                         String.valueOf(password.getInterval())
                 ));
+                writer.write("\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -38,8 +40,9 @@ public class PasswordFile extends PasswordRepositoryAble {
 
     @Override
     public Password create(Password password) {
+        Password p = super.create(password);
         save();
-        return super.create(password);
+        return p;
     }
 
     @Override
@@ -56,21 +59,21 @@ public class PasswordFile extends PasswordRepositoryAble {
 
     @Override
     public Password getById(long id) {
+        Password p = super.getById(id);
         save();
-        return super.getById(id);
+        return p;
     }
 
     @Override
     public boolean containsKey(long id) {
-        save();
         return super.containsKey(id);
     }
 
-    public static PasswordFile loadFromFile(String file){
+    public static PasswordFile loadFromFile(String file) {
         PasswordFile service = new PasswordFile(file);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file,StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file, StandardCharsets.UTF_8))) {
             String line = null;
-            while ((line= reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 String[] row = line.split("/");
                 service.create(new Password(
                         Long.parseLong(row[0]),

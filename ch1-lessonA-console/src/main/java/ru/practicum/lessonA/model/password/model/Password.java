@@ -1,6 +1,5 @@
 package ru.practicum.lessonA.model.password.model;
 
-import java.time.LocalDateTime;
 
 public class Password {
     private Long id;
