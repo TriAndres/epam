@@ -1,15 +1,17 @@
 package ru.practicum.lessonA.menu;
 
-import org.w3c.dom.ls.LSOutput;
+import ru.practicum.lessonA.model.password.controller.PasswordController;
+import ru.practicum.lessonA.model.password.model.Password;
 
-import java.util.Scanner;
-
-import static ru.practicum.lessonA.model.argument.controller.ArgumentController.argument;
-import static ru.practicum.lessonA.model.numbers.controller.NumbersController.numbersLesson;
+import static ru.practicum.lessonA.console.Console.getString;
 
 
 public class Menu {
-    private final Scanner scanner = new Scanner(System.in);
+    private LessonMenu lessonMenu;
+
+    public Menu() {
+        lessonMenu = new LessonMenu();
+    }
 
     public void game() {
         while (true) {
@@ -17,50 +19,44 @@ public class Menu {
             if (line.equals("0")) break;
             select(line);
         }
-        System.out.println("Вышли из программы.");
     }
 
     private String menu() {
         System.out.println("\n\tВыберите действие:" +
-                "\n\t1 - Приветствовать любого пользователя при вводе его имени через команд-" +
-                "\n\t    ную строку." +
-                "\n\t2 - Отобразить в окне консоли аргументы командной строки в обратном по" +
-                "\n\t    рядке." +
-                "\n\t3 - Вывести заданное количество случайных чисел с переходом и без перехода" +
-                "\n\t     на новую строку." +
-                "\n\t4 - Ввести пароль из командной строки и сравнить его со строкой-образцом." +
-                "\n\t5 - Ввести целые числа как аргументы командной строки, подсчитать их сум-" +
-                "\n\t    мы и произведения. Вывести результат на консоль." +
-                "\n\t6 - Вывести фамилию разработчика, дату и время получения задания, а также" +
-                "\n\t    дату и время сдачи задания." +
-                "\n\t0 - для выхода");
-        return scanner.next();
+                "\n\t1 - регистрация" +
+                "\n\t2 - вход" +
+                "\n\t0 - выход из программы");
+        return getString();
     }
 
     private void select(String line) {
         switch (line) {
-            case "1":
-                argument().hello();
-                break;
-            case "2":
-                argument().reverse();
-                break;
-            case "3":
-                numbersLesson().lesson3();
-                break;
-            case "4":
-                System.out.println("в разработке");;
-                break;
-            case "5":
-                numbersLesson().lesson5();
-                break;
-            case "6":
-                System.out.println("в разработке");
-                break;
+            case "1": {
+                Password password = PasswordController.password().registration();
+                if (password.getRegistration()) {
+                    lessonMenu.game();
+                    password.setRegistration(false);
+                    System.out.println("Вышли из программы.");
+                    break;
+                } else {
+                    break;
+                }
+
+            }
+            case "2": {
+                Password password = PasswordController.password().entrance();
+                if (password.getRegistration()) {
+                    lessonMenu.game();
+                    password.setRegistration(false);
+                    System.out.println("Вышли из программы.");
+                    break;
+                } else {
+                    break;
+                }
+            }
             default:
                 System.out.println("Выберите предложеные действия");
                 break;
-
         }
     }
 }

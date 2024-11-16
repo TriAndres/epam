@@ -3,7 +3,7 @@ package ru.practicum.lessonA.model.password.service;
 import ru.practicum.lessonA.model.password.file.PasswordFile;
 import ru.practicum.lessonA.model.password.model.Password;
 
-import static ru.practicum.lessonA.methods.console.Console.getString;
+import static ru.practicum.lessonA.console.Console.getString;
 import static ru.practicum.lessonA.model.password.file.PasswordFile.loadFromFile;
 
 public class PasswordLessonService {
@@ -54,6 +54,7 @@ public class PasswordLessonService {
         }
         Password pp = new Password(logins, password);
         pp.setId(getNextId());
+        pp.setRegistration(false);
         passwordFile.create(pp);
         System.out.println("Логин и пароль записан.");
     }

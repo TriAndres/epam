@@ -5,6 +5,7 @@ public class Password {
     private Long id;
     private String login;
     private String password;
+    private Boolean registration;
     private String name;
     private String localDateTime;
     private Integer interval;
@@ -14,10 +15,17 @@ public class Password {
         this.password = password;
     }
 
-    public Password(Long id, String login, String password, String name, String localDateTime, Integer interval) {
+    public Password(Long id,
+                    String login,
+                    String password,
+                    Boolean registration,
+                    String name,
+                    String localDateTime,
+                    Integer interval) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.registration = registration;
         this.name = name;
         this.localDateTime = localDateTime;
         this.interval = interval;
@@ -45,6 +53,14 @@ public class Password {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(Boolean registration) {
+        this.registration = registration;
     }
 
     public String getName() {

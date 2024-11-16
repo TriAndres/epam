@@ -2,6 +2,7 @@ package ru.practicum.lessonA.model.password.controller;
 
 import ru.practicum.lessonA.model.password.file.PasswordFile;
 import ru.practicum.lessonA.model.password.service.PasswordLessonService;
+import ru.practicum.lessonA.model.password.service.PasswordService;
 
 import static ru.practicum.lessonA.model.password.file.PasswordFile.loadFromFile;
 
@@ -11,5 +12,9 @@ public class PasswordController {
 
     public static PasswordLessonService passwordLesson() {
         return new PasswordLessonService(passwordFile);
+    }
+
+    public static PasswordService password() {
+        return new PasswordService(passwordFile);
     }
 }

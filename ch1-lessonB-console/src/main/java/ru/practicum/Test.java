@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.methods;
+package ru.practicum;
 
 import java.io.BufferedReader;
 import java.io.IOException;

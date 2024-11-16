@@ -22,6 +22,7 @@ public class PasswordFile extends PasswordRepositoryAble {
                         String.valueOf(password.getId()),
                         password.getLogin(),
                         password.getPassword(),
+                        String.valueOf(password.getRegistration()),
                         password.getName(),
                         password.getLocalDateTime(),
                         String.valueOf(password.getInterval())
@@ -79,9 +80,10 @@ public class PasswordFile extends PasswordRepositoryAble {
                         Long.parseLong(row[0]),
                         row[1],
                         row[2],
-                        row[3],
+                        Boolean.valueOf(row[3]),
                         row[4],
-                        Integer.parseInt(row[5])
+                        row[5],
+                        Integer.parseInt(row[6])
                 ));
             }
         } catch (IOException e) {

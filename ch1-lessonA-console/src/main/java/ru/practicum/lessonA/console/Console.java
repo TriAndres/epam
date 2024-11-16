@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.methods.console;
+package ru.practicum.lessonA.console;
 
 import java.util.Scanner;
 

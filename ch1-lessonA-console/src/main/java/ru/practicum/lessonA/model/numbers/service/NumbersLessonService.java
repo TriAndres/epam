@@ -5,8 +5,8 @@ import ru.practicum.lessonA.model.numbers.model.Numbers;
 
 import java.util.Random;
 
-import static ru.practicum.lessonA.methods.console.Console.getInteger;
-import static ru.practicum.lessonA.methods.console.Console.getString;
+import static ru.practicum.lessonA.console.Console.getInteger;
+import static ru.practicum.lessonA.console.Console.getString;
 
 
 public class NumbersLessonService {
