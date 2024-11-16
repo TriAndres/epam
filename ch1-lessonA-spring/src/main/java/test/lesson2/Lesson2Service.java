@@ -1,16 +1,16 @@
-package ru.practicum.lessonA.lesson2;
+package test.lesson2;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.practicum.lessonA.lesson2.model.Lesson2;
-import ru.practicum.lessonA.lesson2.model.ReversOrder;
+import test.lesson2.model.Lesson2;
+import test.lesson2.model.ReversOrder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-import static ru.practicum.lessonA.lesson2.model.ReversOrder.NOT_REVERSE;
-import static ru.practicum.lessonA.lesson2.model.ReversOrder.REVERSE;
+import static test.lesson2.model.ReversOrder.NOT_REVERSE;
+import static test.lesson2.model.ReversOrder.REVERSE;
 
 
 @Service

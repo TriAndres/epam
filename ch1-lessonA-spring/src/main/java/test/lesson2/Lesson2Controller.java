@@ -1,10 +1,10 @@
-package ru.practicum.lessonA.lesson2;
+package test.lesson2;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.lessonA.lesson2.model.Lesson2;
-import ru.practicum.lessonA.lesson2.model.ReversOrder;
+import test.lesson2.model.Lesson2;
+import test.lesson2.model.ReversOrder;
 
 import java.util.Collection;
 import java.util.Optional;

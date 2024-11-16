@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.argument;
+package ru.practicum.lessonA.argument.model;
 
 import lombok.Builder;
 import lombok.Data;

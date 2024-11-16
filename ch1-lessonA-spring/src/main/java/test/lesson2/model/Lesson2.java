@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.lesson2.model;
+package test.lesson2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

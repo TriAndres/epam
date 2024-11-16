@@ -1,7 +1,7 @@
-package ru.practicum.lessonA.lesson2;
+package test.lesson2;
 
 import org.springframework.stereotype.Repository;
-import ru.practicum.lessonA.lesson2.model.Lesson2;
+import test.lesson2.model.Lesson2;
 
 import java.util.Collection;
 import java.util.HashMap;

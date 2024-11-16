@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.numbers;
+package ru.practicum.lessonA.numbers.model;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,5 +7,5 @@ import lombok.Data;
 @Builder
 public class Numbers {
     private Long id;
-    private Integer number;
+    private Integer num;
 }

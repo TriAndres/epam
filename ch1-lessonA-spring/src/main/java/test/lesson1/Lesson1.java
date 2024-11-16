@@ -1,4 +1,4 @@
-package ru.practicum.lessonA.lesson1;
+package test.lesson1;
 
 import lombok.Data;
 
