@@ -20,15 +20,6 @@ public class PasswordService {
         passwords = passwordFile.getByAll();
     }
 
-//    public static void main(String[] args) {
-//        String file = "ch1-lessonA-console\\src\\main\\java\\ru\\practicum\\lessonA\\model\\password\\file\\PasswordFile.txt";
-//        PasswordFile passwordFile = loadFromFile(file);
-//        PasswordService pls = new PasswordService(passwordFile);
-//
-//        System.out.println(pls.registration().getRegistration());
-//        ;
-//    }
-
     public Password registration() {
         boolean flag;
         int passwordLength = 4;

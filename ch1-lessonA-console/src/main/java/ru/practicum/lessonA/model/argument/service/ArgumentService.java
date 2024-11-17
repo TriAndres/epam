@@ -5,33 +5,26 @@ import ru.practicum.lessonA.model.argument.model.Argument;
 
 import java.util.Scanner;
 
+import static ru.practicum.lessonA.console.Console.getString;
 import static ru.practicum.lessonA.model.argument.file.ArgumentFile.loadFromFile;
 
 public class ArgumentService {
     private final ArgumentFile argumentFile;
-    private final Scanner scanner = new Scanner(System.in);
 
-    public ArgumentService() {
-        String file = "ch1-lessonA-console\\src\\main\\java\\ru\\practicum\\lessonA\\model\\argument\\file\\ArgumentFile.txt";
-        this.argumentFile = loadFromFile(file);
+    public ArgumentService(ArgumentFile argumentFile) {
+        this.argumentFile = argumentFile;
     }
 
-    public static void main(String[] args) {
-        ArgumentService service = new ArgumentService();
-        service.hello();
-        service.reverse();
-    }
-
-    public void hello() {
+    public void lesson1() {
         System.out.println("Введите ваше имя.");
-        Argument name = new Argument(getNextId(), scanner.next());
+        Argument name = new Argument(getNextId(), getString());
         argumentFile.create(name);
         System.out.println(name.getArgument() + ", Приветствую вас!");
     }
 
-    public void reverse() {
+    public void lesson2() {
         System.out.println("Введите аргумент.");
-        Argument name = new Argument(getNextId(), scanner.next());
+        Argument name = new Argument(getNextId(), getString());
         argumentFile.create(name);
         System.out.println(new StringBuffer().append(name.getArgument()).reverse());
     }

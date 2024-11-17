@@ -3,6 +3,7 @@ package ru.practicum.lessonA.menu;
 import static ru.practicum.lessonA.console.Console.getString;
 import static ru.practicum.lessonA.model.argument.controller.ArgumentController.argument;
 import static ru.practicum.lessonA.model.numbers.controller.NumbersController.numbersLesson;
+import static ru.practicum.lessonA.model.password.controller.PasswordController.passwordLesson4;
 
 public class LessonMenu {
 
@@ -34,17 +35,16 @@ public class LessonMenu {
     private void select(String line) {
         switch (line) {
             case "1":
-                argument().hello();
+                argument().lesson1();
                 break;
             case "2":
-                argument().reverse();
+                argument().lesson2();
                 break;
             case "3":
                 numbersLesson().lesson3();
                 break;
             case "4":
-                System.out.println("в разработке");
-                ;
+                passwordLesson4().lesson4();
                 break;
             case "5":
                 numbersLesson().lesson5();
