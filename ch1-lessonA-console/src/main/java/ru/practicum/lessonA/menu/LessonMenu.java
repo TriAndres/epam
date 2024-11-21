@@ -4,6 +4,7 @@ import static ru.practicum.lessonA.console.Console.getString;
 import static ru.practicum.lessonA.model.argument.controller.ArgumentController.argument;
 import static ru.practicum.lessonA.model.numbers.controller.NumbersController.numbersLesson;
 import static ru.practicum.lessonA.model.password.controller.PasswordController.passwordLesson4;
+import static ru.practicum.lessonA.model.password.controller.PasswordController.passwordLesson6;
 
 public class LessonMenu {
 
@@ -50,7 +51,7 @@ public class LessonMenu {
                 numbersLesson().lesson5();
                 break;
             case "6":
-                System.out.println("в разработке");
+                passwordLesson6().lesson6();
                 break;
             default:
                 System.out.println("Выберите предложеные действия");

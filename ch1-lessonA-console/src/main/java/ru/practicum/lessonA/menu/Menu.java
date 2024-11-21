@@ -4,6 +4,7 @@ import ru.practicum.lessonA.model.password.controller.PasswordController;
 import ru.practicum.lessonA.model.password.model.Password;
 
 import static ru.practicum.lessonA.console.Console.getString;
+import static ru.practicum.lessonA.model.password.controller.PasswordController.*;
 
 
 public class Menu {
@@ -14,6 +15,7 @@ public class Menu {
     }
 
     public void game() {
+        setRegistration();
         while (true) {
             String line = menu();
             if (line.equals("0")) break;
@@ -32,31 +34,49 @@ public class Menu {
     private void select(String line) {
         switch (line) {
             case "1": {
-                Password password = PasswordController.password().registration();
+                Password password = password().getById(passwordService().registration());
                 if (password.getRegistration()) {
                     lessonMenu.game();
                     password.setRegistration(false);
+                    password().create(password);
                     System.out.println("Вышли из программы.");
                     break;
                 } else {
                     break;
                 }
-
             }
             case "2": {
-                Password password = PasswordController.password().entrance();
-                if (password.getRegistration()) {
-                    lessonMenu.game();
-                    password.setRegistration(false);
-                    System.out.println("Вышли из программы.");
-                    break;
-                } else {
-                    break;
+                passwordService().entrance();
+                long id = 0;
+                for (Password password : password().getByAll()) {
+                    if (password.getRegistration().equals(true)) {
+                        id = password.getId();
+                        break;
+                    }
+                }
+                if (id != 0) {
+                    Password password = password().getById(Integer.parseInt(String.valueOf(id)));
+                    if (password.getRegistration()) {
+                        lessonMenu.game();
+                        password.setRegistration(false);
+                        password().create(password);
+                        System.out.println("Вышли из программы.");
+                        break;
+                    } else {
+                        break;
+                    }
                 }
             }
             default:
                 System.out.println("Выберите предложеные действия");
                 break;
+        }
+    }
+
+    private void setRegistration() {
+        for (Password password : password().getByAll()) {
+            password.setRegistration(false);
+            password().create(password);
         }
     }
 }

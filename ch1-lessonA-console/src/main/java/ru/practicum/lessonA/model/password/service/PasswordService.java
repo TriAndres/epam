@@ -20,7 +20,7 @@ public class PasswordService {
         passwords = passwordFile.getByAll();
     }
 
-    public Password registration() {
+    public int registration() {
         boolean flag;
         int passwordLength = 4;
         System.out.println("Введите логин:");
@@ -48,10 +48,10 @@ public class PasswordService {
         pp.setRegistration(true);
         passwordFile.create(pp);
         System.out.println("Логин и пароль записан.");
-        return pp;
+        return Integer.parseInt(String.valueOf(pp.getId()));
     }
 
-    public Password entrance() {
+    public void entrance() {
         System.out.println("Введите логинн:");
         logins = getString();
         for (Password password1 : passwords) {
@@ -62,21 +62,17 @@ public class PasswordService {
                     System.out.println("Пароль ввели верно.");
                     pp = password1;
                     pp.setRegistration(true);
+                    passwordFile.create(pp);
                     break;
                 } else {
-                    pp = new Password("0", "0");
-                    pp.setRegistration(false);
                     System.out.println("Пароль введён неверно.");
                     break;
                 }
             } else {
-                pp = new Password("0", "0");
-                pp.setRegistration(false);
-                System.out.println("Пароль введён неверно.");
+                System.out.println("Логин введён неверно.");
                 break;
             }
         }
-        return pp;
     }
 
     private long getNextId() {

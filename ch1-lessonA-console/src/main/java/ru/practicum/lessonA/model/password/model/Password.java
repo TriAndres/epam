@@ -15,6 +15,12 @@ public class Password {
         this.password = password;
     }
 
+    public Password(Long id, String login, String password) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
+
     public Password(Long id,
                     String login,
                     String password,

@@ -1,7 +1,12 @@
 package ru.practicum.lessonA.model.password.service;
 
 import ru.practicum.lessonA.model.password.file.PasswordFile;
+import ru.practicum.lessonA.model.password.model.Password;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static ru.practicum.lessonA.console.Console.getString;
 import static ru.practicum.lessonA.model.password.file.PasswordFile.loadFromFile;
 
 public class PasswordLesson6Service {
@@ -24,6 +29,22 @@ public class PasswordLesson6Service {
     дату и время сдачи задания.
      */
     public void lesson6() {
-
+        long id = 0;
+        for (Password password : passwordFile.getByAll()) {
+            if (password.getRegistration().equals(true)) {
+                id = password.getId();
+            }
+        }
+        Password password = passwordFile.getById(id);
+        if (password.getName().equals("null")) {
+            System.out.println("Введите имя:");
+            password.setName(getString());
+            passwordFile.create(password);
+        }
+        if (password.getLocalDateTime().equals("null")) {
+            password.setLocalDateTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+            passwordFile.create(password);
+        }
+        System.out.println(password.getName() + " в " + password.getLocalDateTime() + ", вы получили задание");
     }
 }
