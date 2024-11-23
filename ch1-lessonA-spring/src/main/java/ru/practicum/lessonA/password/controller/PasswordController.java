@@ -24,12 +24,12 @@ public class PasswordController {
         return service.save(password);
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     public Optional<Password> findById(@PathVariable long id) {
         return service.findById(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable long id) {
         service.deleteById(id);
     }

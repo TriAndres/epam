@@ -15,6 +15,6 @@ public class Argument {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "argumen")
+    @Column(name = "argument")
     private String argument;
 }
