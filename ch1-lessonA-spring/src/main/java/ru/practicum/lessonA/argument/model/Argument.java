@@ -1,11 +1,20 @@
 package ru.practicum.lessonA.argument.model;
 
-import lombok.Builder;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "arguments")
 public class Argument {
-    private Long id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column(name = "argumen")
     private String argument;
 }
