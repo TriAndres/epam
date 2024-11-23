@@ -17,6 +17,11 @@ public class ArgumentController {
 
     private final ArgumentServiceImpl argumentService;
 
+    @GetMapping
+    public Collection<Argument> findAll() {
+        return argumentService.findAll();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Argument save(@RequestBody Argument argument) {
@@ -26,11 +31,6 @@ public class ArgumentController {
     @GetMapping("/{id}")
     public Optional<Argument> findById(@PathVariable long id) {
         return argumentService.findById(id);
-    }
-
-    @GetMapping
-    public Collection<Argument> findAll() {
-        return argumentService.findAll();
     }
 
     @DeleteMapping("/{id}")
