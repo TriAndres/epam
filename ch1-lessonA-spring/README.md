@@ -15,3 +15,5 @@
 ### Запуск
 App.java
 
+![схема](file\ch1-lessonA-spring.drawio.png)
+
