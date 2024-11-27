@@ -16,7 +16,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>ch1-lessonA-console</module>
-        <module>ch1-lessonA-spring</module>
         <module>ch1-lessonB-console</module>
     </modules>
 
