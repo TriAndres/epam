@@ -15,3 +15,5 @@
 ### Запуск
 Main.java
 
+![Shema](ch1-lessonA-console.jpg)
+
