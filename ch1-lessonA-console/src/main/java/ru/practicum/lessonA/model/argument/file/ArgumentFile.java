@@ -63,7 +63,6 @@ public class ArgumentFile extends ArgumentRepositoryAble {
                 String[] row = line.split("/");
                 argumentFile.create(new Argument(Long.valueOf(row[0]), row[1]));
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

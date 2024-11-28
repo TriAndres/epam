@@ -5,7 +5,7 @@ import ru.practicum.number.repository.NumbersRepository;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
+import java.util.Collection;
 
 public class NumbersFile extends NumbersRepository {
     private final String file;
@@ -16,14 +16,22 @@ public class NumbersFile extends NumbersRepository {
 
     public void save() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            for (Numbers number : findAll().values()) {
-                writer.write(String.join("/",
-                        String.valueOf(number.getId()),
-                        String.valueOf(number.getNum())));
+            for (Numbers number : findAll()) {
+                writer.write(
+                        String.valueOf(number.getId()) +
+                                "/" +
+                        String.valueOf(number.getNum()) +
+                        "\n"
+                );
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Collection<Numbers> findAll() {
+        return super.findAll();
     }
 
     @Override
@@ -41,15 +49,23 @@ public class NumbersFile extends NumbersRepository {
     }
 
     @Override
-    public Map<Long, Numbers> findAll() {
-        return super.findAll();
+    public boolean containsKey(long id) {
+        save();
+        return super.containsKey(id);
     }
 
     @Override
     public void deleteById(long id) {
-        save();
         super.deleteById(id);
+        save();
     }
+
+    @Override
+    public void deleteAll() {
+        super.deleteAll();
+        save();
+    }
+
 
     public static NumbersFile loadFromFile(String file) {
         NumbersFile numbersFile = new NumbersFile(file);
