@@ -1,6 +1,7 @@
 package ru.practicum.number.controller;
 
 import ru.practicum.number.file.NumbersFile;
+import ru.practicum.number.service.NumbersLessonService;
 import ru.practicum.number.service.NumbersService;
 
 public class NumbersController {
@@ -9,5 +10,9 @@ public class NumbersController {
 
     public static NumbersService numbersService() {
         return new NumbersService(numbersFile);
+    }
+
+    public static NumbersLessonService numbersLessonService() {
+        return new NumbersLessonService(numbersFile);
     }
 }
