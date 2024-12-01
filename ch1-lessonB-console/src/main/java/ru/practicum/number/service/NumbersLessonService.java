@@ -74,32 +74,59 @@ public class NumbersLessonService {
                 , lineCount);
     }
 
-    private void show(List<Numbers> numbers, int lineCount) {
-        int count = 0;
-        int countAll = 0;
-        System.out.println("id/numbers");
-        for (Numbers number : numbers) {
-            System.out.print("\t" + number.getId() + "/" + number.getNum());
-            count++;
-            countAll++;
-            if (count == lineCount) {
-                System.out.println();
-                count = 0;
-            }
-        }
-        if (countAll == 0) {
-            System.out.println("Список пуст.");
-        }
+    public void lesson6() {
+        System.out.println("6. Простые числа.(Все от однозначного до трехзначного числа)");
+        int lineCount = 10;
+        show(numbersFile.findAll()
+                        .stream()
+                        .filter(i -> {
+                            for (int k = 2; k <= Math.sqrt(i.getNum()); k++) {
+                                if (i.getNum() % k == 0) {
+                                    return false;
+                                } else if (String.valueOf(i.getNum()).length() > 3) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }).toList()
+                , lineCount);
     }
 
-   /*
-Ввести с консоли n целых чисел. На консоль вывести:
-6. Простые числа.
-7. Отсортированные числа в порядке возрастания и убывания.
-8. Числа в порядке убывания частоты встречаемости чисел.
-9. «Счастливые» числа.
-10. Числа-палиндромы, значения которых в прямом и обратном порядке совпадают.
-11. Элементы, которые равны полусумме соседних элементов.
- */
+    public void lesson7() {
+        System.out.println("7. Отсортированные числа в порядке возрастания и убывания.");
+    }
 
+    public void lesson8() {
+        System.out.println("8. Числа в порядке убывания частоты встречаемости чисел.");
+    }
+
+    public void lesson9() {
+        System.out.println("9. «Счастливые» числа.");
+    }
+
+    public void lesson10() {
+        System.out.println("10. Числа-палиндромы, значения которых в прямом и обратном порядке совпадают.");
+    }
+
+    public void lesson11() {
+        System.out.println("11. Элементы, которые равны полусумме соседних элементов.");
+    }
+
+   private void show(List<Numbers> numbers, int lineCount) {
+       int count = 0;
+       int countAll = 0;
+       System.out.println("id/numbers");
+       for (Numbers number : numbers) {
+           System.out.print("\t" + number.getId() + "/" + number.getNum());
+           count++;
+           countAll++;
+           if (count == lineCount) {
+               System.out.println();
+               count = 0;
+           }
+       }
+       if (countAll == 0) {
+           System.out.println("Список пуст.");
+       }
+   }
 }

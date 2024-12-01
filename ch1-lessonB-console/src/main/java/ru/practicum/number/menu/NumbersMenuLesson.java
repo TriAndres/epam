@@ -52,28 +52,27 @@ public class NumbersMenuLesson implements NumbersMenu{
                 numbersLessonService().lesson5();
                 break;
             case 6:
-                System.out.println("В разработке.");
-                //numbersLessonService().lesson6();
+                numbersLessonService().lesson6();
                 break;
             case 7:
                 System.out.println("В разработке.");
-                //numbersLessonService().lesson7();
+                numbersLessonService().lesson7();
                 break;
             case 8:
                 System.out.println("В разработке.");
-                //numbersLessonService().lesson8();
+                numbersLessonService().lesson8();
                 break;
             case 9:
                 System.out.println("В разработке.");
-                //numbersLessonService().lesson9();
+                numbersLessonService().lesson9();
                 break;
             case 10:
                 System.out.println("В разработке.");
-                //numbersLessonService().lesson10();
+                numbersLessonService().lesson10();
                 break;
             case 11:
                 System.out.println("В разработке.");
-                //numbersLessonService().lesson11();
+                numbersLessonService().lesson11();
                 break;
             default:
                 System.out.println("выбирите верное действие.");
