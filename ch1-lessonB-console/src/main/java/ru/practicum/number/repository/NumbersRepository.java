@@ -2,15 +2,15 @@ package ru.practicum.number.repository;
 
 import ru.practicum.number.model.Numbers;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NumbersRepository {
     private final Map<Long, Numbers> numbersMap = new HashMap<>();
 
-    public Collection<Numbers> findAll() {
-        return numbersMap.values();
+    public ArrayList<Numbers> findAll() {
+        return new ArrayList<>(numbersMap.values());
     }
 
     public Numbers save(Numbers numbers) {

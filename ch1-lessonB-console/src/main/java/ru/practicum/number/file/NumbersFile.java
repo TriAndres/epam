@@ -5,7 +5,7 @@ import ru.practicum.number.repository.NumbersRepository;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class NumbersFile extends NumbersRepository {
     private final String file;
@@ -30,7 +30,7 @@ public class NumbersFile extends NumbersRepository {
     }
 
     @Override
-    public Collection<Numbers> findAll() {
+    public ArrayList<Numbers> findAll() {
         return super.findAll();
     }
 

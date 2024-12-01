@@ -40,7 +40,7 @@ public class NumbersMenuLesson implements NumbersMenu{
                 numbersLessonService().lesson1();
                 break;
             case 2:
-                System.out.println("В разработке.");
+                numbersLessonService().lesson2();
                 break;
             case 3:
                 numbersLessonService().lesson3();
