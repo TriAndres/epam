@@ -3,7 +3,10 @@ package ru.practicum.number.service;
 import ru.practicum.number.file.NumbersFile;
 import ru.practicum.number.model.Numbers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
@@ -94,10 +97,30 @@ public class NumbersLessonService {
 
     public void lesson7() {
         System.out.println("7. Отсортированные числа в порядке возрастания и убывания.");
+        int lineCount = 10;
+        System.out.println("В порядке возрастания:");
+        show(numbersFile.findAll()
+                        .stream().sorted((a, b) -> a.getNum() - b.getNum())
+                        .toList()
+                , lineCount);
+        System.out.println("\nВ порядке убывания:");
+        show(numbersFile.findAll()
+                        .stream().sorted((a, b) -> b.getNum() - a.getNum())
+                        .toList()
+                , lineCount);
     }
 
     public void lesson8() {
         System.out.println("8. Числа в порядке убывания частоты встречаемости чисел.");
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Numbers numbers : numbersFile.findAll()) {
+            if (!map.containsKey(numbers.getNum())) {
+                map.put(numbers.getNum(), 1);
+            } else {
+                map.put(numbers.getNum(), map.get(numbers.getNum()) + 1);
+            }
+        }
+        map.entrySet().stream().sorted((a, b) -> b.getKey() - a.getKey()).forEach(System.out::println);
     }
 
     public void lesson9() {
@@ -112,21 +135,21 @@ public class NumbersLessonService {
         System.out.println("11. Элементы, которые равны полусумме соседних элементов.");
     }
 
-   private void show(List<Numbers> numbers, int lineCount) {
-       int count = 0;
-       int countAll = 0;
-       System.out.println("id/numbers");
-       for (Numbers number : numbers) {
-           System.out.print("\t" + number.getId() + "/" + number.getNum());
-           count++;
-           countAll++;
-           if (count == lineCount) {
-               System.out.println();
-               count = 0;
-           }
-       }
-       if (countAll == 0) {
-           System.out.println("Список пуст.");
-       }
-   }
+    private void show(List<Numbers> numbers, int lineCount) {
+        int count = 0;
+        int countAll = 0;
+        System.out.println("id/numbers");
+        for (Numbers number : numbers) {
+            System.out.print("\t" + number.getId() + "/" + number.getNum());
+            count++;
+            countAll++;
+            if (count == lineCount) {
+                System.out.println();
+                count = 0;
+            }
+        }
+        if (countAll == 0) {
+            System.out.println("Список пуст.");
+        }
+    }
 }
