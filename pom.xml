@@ -17,6 +17,9 @@
     <modules>
         <module>ch1-lessonA-console</module>
         <module>ch1-lessonB-console</module>
+        <module>ch2-lessonA-console</module>
+        <module>ch2-lessonB-console</module>
+        <module>ch2-lessonC-console</module>
     </modules>
 
     <properties>
