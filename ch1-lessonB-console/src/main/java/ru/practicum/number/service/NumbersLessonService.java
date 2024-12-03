@@ -3,10 +3,10 @@ package ru.practicum.number.service;
 import ru.practicum.number.file.NumbersFile;
 import ru.practicum.number.model.Numbers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
@@ -123,16 +123,55 @@ public class NumbersLessonService {
         map.entrySet().stream().sorted((a, b) -> b.getKey() - a.getKey()).forEach(System.out::println);
     }
 
+    /*
+    Счастливым будет считаться такое число из цифр,
+    в котором сумма левых цифр равна сумме правых,
+    например: 457961:4+5+5=9+6+1=16.
+     */
     public void lesson9() {
         System.out.println("9. «Счастливые» числа.");
+        int lineCount = 10;
+        show(numbersFile.findAll().stream()
+                        .filter(i -> {
+                                    int length = Integer.toString(i.getNum()).length();
+                                    String[] num = Integer.toString(i.getNum()).split("");
+                                    int left = length / 2;
+                                    int sum1 = 0;
+                                    int sum2 = 0;
+                                    for (int a = 1; a == left; a++) {
+                                        sum1 += Integer.parseInt(num[a - 1]);
+                                    }
+                                    for (int a = 1; a == left; a++) {
+                                        sum2 += Integer.parseInt(num[(a + left) - 1]);
+                                    }
+                                    return sum1 == sum2 && length % 2 == 0;
+                                }
+                        ).toList()
+                , lineCount);
     }
 
     public void lesson10() {
         System.out.println("10. Числа-палиндромы, значения которых в прямом и обратном порядке совпадают.");
+        int lineCount = 10;
+        show(numbersFile.findAll().stream()
+                        .filter(i -> {
+                            StringBuilder stringBuilder = new StringBuilder(Integer.toString(i.getNum()));
+                            return Integer.toString(i.getNum()).contentEquals(stringBuilder.reverse());
+                        }).toList()
+                , lineCount);
     }
 
     public void lesson11() {
         System.out.println("11. Элементы, которые равны полусумме соседних элементов.");
+        int lineCount = 10;
+        List<Numbers> list = numbersFile.findAll();
+        List<Numbers> list2 = new ArrayList<>();
+        for (int i = 1; i < list.size() - 1; i++) {
+            if (list.get(i).getNum() == (list.get(i - 1).getNum() + list.get(i + 1).getNum()) / 2) {
+                list2.add(new Numbers(list.get(i).getId(), list.get(i).getNum()));
+            }
+        }
+        show(list2, lineCount);
     }
 
     private void show(List<Numbers> numbers, int lineCount) {
