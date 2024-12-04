@@ -66,7 +66,6 @@ public class NumbersFile extends NumbersRepository {
         save();
     }
 
-
     public static NumbersFile loadFromFile(String file) {
         NumbersFile numbersFile = new NumbersFile(file);
         try(BufferedReader reader = new BufferedReader(new FileReader(file, StandardCharsets.UTF_8))) {

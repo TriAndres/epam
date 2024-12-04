@@ -31,6 +31,6 @@ public class Numbers {
 
     @Override
     public String toString() {
-        return id + "/" + number;
+        return id + "/" + number + "\n";
     }
 }

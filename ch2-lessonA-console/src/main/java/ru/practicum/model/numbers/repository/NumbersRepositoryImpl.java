@@ -17,8 +17,13 @@ public class NumbersRepositoryImpl implements NumbersRepository{
     }
 
     @Override
-    public void save(Numbers numbers) {
-        numbersMap.put(numbers.getId(), numbers);
+    public Numbers save(Numbers numbers) {
+        return numbersMap.put(numbers.getId(), numbers);
+    }
+
+    @Override
+    public boolean containsKey(long id) {
+        return numbersMap.containsKey(id);
     }
 
     @Override

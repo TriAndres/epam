@@ -7,13 +7,13 @@ import java.util.List;
 public interface NumbersRepository {
     List<Numbers> findAll();
 
-    void save(Numbers numbers);
+    Numbers save(Numbers numbers);
+
+    boolean containsKey(long id);
 
     Numbers findById(long id);
 
     void deleteById(long id);
 
     void deleteAll();
-
-
 }
