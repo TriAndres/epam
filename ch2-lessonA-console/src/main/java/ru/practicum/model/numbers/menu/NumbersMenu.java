@@ -1,4 +1,9 @@
 package ru.practicum.model.numbers.menu;
 
-public class NumbersMenu {
+public interface NumbersMenu {
+    void game();
+
+    int menu();
+
+    void select(int num);
 }

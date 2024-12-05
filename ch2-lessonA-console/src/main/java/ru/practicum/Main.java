@@ -1,7 +1,9 @@
 package ru.practicum;
 
+import ru.practicum.model.numbers.menu.NumbersMenuImpl;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new NumbersMenuImpl().game();
     }
 }
