@@ -1,9 +1,9 @@
 package ru.practicum;
 
-import ru.practicum.model.numbers.menu.NumbersMenuImpl;
+import ru.practicum.menu.MenuMain;
 
 public class Main {
     public static void main(String[] args) {
-        new NumbersMenuImpl().game();
+        new MenuMain().game();
     }
 }
