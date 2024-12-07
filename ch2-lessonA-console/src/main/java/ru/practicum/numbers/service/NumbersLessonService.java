@@ -28,11 +28,51 @@ public class NumbersLessonService {
     public void lesson2() {
         System.out.println("2. Упорядочить и вывести числа в порядке возрастания (убывания) значений\n" +
                 " их длины.");
+        int lineSize = 10;
+        System.out.println("В порядке возрастания значений:");
+        show(numbersFile.findAll()
+                        .stream()
+                        .sorted((a, b) -> a.getNumber() - b.getNumber())
+                        .toList()
+                , lineSize);
+        System.out.println("\nВ порядке убывания значений:");
+        show(numbersFile.findAll()
+                        .stream()
+                        .sorted((a, b) -> b.getNumber() - a.getNumber())
+                        .toList()
+                , lineSize);
     }
 
     public void lesson3() {
         System.out.println("3. Вывести на консоль те числа, длина которых меньше (больше) средней,\n" +
                 " а также длину.");
+        int lineSize = 10;
+        int sum = numbersFile.findAll().stream().mapToInt(Numbers::getNumber).sum();
+        System.out.println("Числа меньше средней:");
+        show(numbersFile.findAll()
+                        .stream()
+                        .filter(i -> i.getNumber() > sum / numbersFile.findAll().size())
+                        .toList()
+                , lineSize);
+        System.out.println("\nЧисла больше средней:");
+        show(numbersFile.findAll()
+                        .stream()
+                        .filter(i -> i.getNumber() < sum / numbersFile.findAll().size())
+                        .toList()
+                , lineSize);
+    }
+
+    private void show(List<Numbers> list, int lineSize) {
+        int count = 0;
+        System.out.println("Вывод: id/number/length");
+        for (Numbers numbers : list) {
+            System.out.print("\t" + numbers.getId() + "/" + numbers.getNumber() + "/" + String.valueOf(numbers.getNumber()).length());
+            count++;
+            if (count == lineSize) {
+                System.out.println();
+                count = 0;
+            }
+        }
     }
 
     public void lesson4() {
