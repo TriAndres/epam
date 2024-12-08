@@ -20,4 +20,8 @@ public class Console {
         return num;
     }
 
+    public static String getString() {
+        return scanner.next();
+    }
+
 }

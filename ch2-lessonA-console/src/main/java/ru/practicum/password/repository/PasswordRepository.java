@@ -1,4 +1,14 @@
 package ru.practicum.password.repository;
 
-public class PasswordRepository {
+import ru.practicum.password.model.Password;
+
+import java.util.List;
+
+public interface PasswordRepository {
+    List<Password> findAll();
+    Password save(Password password);
+    boolean containsKey(long id);
+    Password findById(long id);
+    void deleteId(long id);
+    void deleteAll();
 }
