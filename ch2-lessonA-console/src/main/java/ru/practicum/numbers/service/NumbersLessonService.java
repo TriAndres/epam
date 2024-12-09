@@ -78,6 +78,9 @@ public class NumbersLessonService {
     public void lesson4() {
         System.out.println("4. Найти число, в котором число различных цифр минимально. Если таких\n" +
                 " чисел несколько, найти первое из них.");
+        for (Numbers numbers : numbersFile.findAll()) {
+            
+        }
     }
 
     public void lesson5() {

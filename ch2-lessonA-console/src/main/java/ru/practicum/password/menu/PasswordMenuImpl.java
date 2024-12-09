@@ -1,6 +1,9 @@
 package ru.practicum.password.menu;
 
+import ru.practicum.password.model.Password;
+
 import static ru.practicum.console.Console.getInteger;
+import static ru.practicum.password.controller.PasswordController.passwordService;
 
 public class PasswordMenuImpl implements PasswordMenu{
     @Override
@@ -10,6 +13,9 @@ public class PasswordMenuImpl implements PasswordMenu{
             int num = menu();
             if (num == 0) break;
             select(num);
+            if (flag()) {
+                break;
+            }
         }
         System.out.println("Выход из меню паспорта.");
     }
@@ -17,12 +23,9 @@ public class PasswordMenuImpl implements PasswordMenu{
     @Override
     public int menu() {
         System.out.println("\n\tВыбирите действие:" +
-                "\n\t1 - " +
-                "\n\t2 - " +
-                "\n\t3 - " +
-                "\n\t4 - " +
-                "\n\t5 - " +
-                "\n\t0 - ");
+                "\n\t1 - регистрация." +
+                "\n\t2 - вход" +
+                "\n\t0 - выход из программы.");
         return getInteger(-1);
     }
 
@@ -30,23 +33,23 @@ public class PasswordMenuImpl implements PasswordMenu{
     public void select(int num) {
         switch (num) {
             case 1:
-                System.out.println("в разработке");
+                passwordService().registration();
                 break;
             case 2:
-                System.out.println("в разработке");
-                break;
-            case 3:
-                System.out.println("в разработке");
-                break;
-            case 4:
-                System.out.println("в разработке");
-                break;
-            case 5:
-                System.out.println("в разработке");
+                passwordService().entrance();
                 break;
             default:
                 System.out.println("Выбирите действие из писка.");
                 break;
         }
+    }
+
+    private boolean flag() {
+        for (Password password : passwordService().findAll()) {
+            if (password.getRegistration().equals(true)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

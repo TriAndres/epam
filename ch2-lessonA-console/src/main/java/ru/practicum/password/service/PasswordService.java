@@ -3,6 +3,8 @@ package ru.practicum.password.service;
 import ru.practicum.password.file.PasswordFile;
 import ru.practicum.password.model.Password;
 
+import java.util.List;
+
 import static ru.practicum.console.Console.getString;
 
 public class PasswordService {
@@ -21,6 +23,9 @@ public class PasswordService {
     //числа объект можно создавать в виде массива символов.
     //Ввести n чисел с консоли.
 
+    public List<Password> findAll() {
+        return passwordFile.findAll();
+    }
     public void registration() {
         int lengthRegistration = 4;
         System.out.println("Введите логин (или 0 для выхода)");
