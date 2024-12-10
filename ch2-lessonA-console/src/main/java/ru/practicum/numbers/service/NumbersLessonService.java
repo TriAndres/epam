@@ -3,7 +3,7 @@ package ru.practicum.numbers.service;
 import ru.practicum.numbers.file.NumbersFile;
 import ru.practicum.numbers.model.Numbers;
 
-import java.util.List;
+import java.util.*;
 
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
@@ -77,10 +77,52 @@ public class NumbersLessonService {
 
     public void lesson4() {
         System.out.println("4. Найти число, в котором число различных цифр минимально. Если таких\n" +
-                " чисел несколько, найти первое из них.");
-        for (Numbers numbers : numbersFile.findAll()) {
-            
+                " чисел несколько, найти первое из них.(число из 6 цифр)");
+        class Num {
+            private final Long id;
+            private final Integer num;
+            private final Integer various;
+
+            public Num(Long id, Integer num, Integer various) {
+                this.id = id;
+                this.num = num;
+                this.various = various;
+            }
+
+            public Long getId() {
+                return id;
+            }
+
+            public Integer getNum() {
+                return num;
+            }
+
+            public Integer getVarious() {
+                return various;
+            }
         }
+
+        List<Num> nums = new ArrayList<>();
+        for (Numbers numbers : numbersFile.findAll()) {
+            String[] line = String.valueOf(numbers.getNumber()).split("");
+            Map<Integer, Integer> map = new HashMap<>();
+            for (String s : line) {
+                if (!map.containsKey(Integer.parseInt(s))) {
+                    map.put(Integer.parseInt(s), 1);
+                } else {
+                    map.put(Integer.parseInt(s), map.get(Integer.parseInt(s)) + 1);
+                }
+            }
+            nums.add(new Num(numbers.getId(), numbers.getNumber(), map.size()));
+        }
+        System.out.println("id/number/various");
+        int size = 6;
+        List<Num> nums1 = nums
+                .stream()
+                .filter(i -> String.valueOf(i.getNum()).length() == size)
+                .sorted((a, b) -> b.getNum() - a.getNum())
+                .sorted((a, b) -> a.getVarious() - b.getVarious()).toList();
+        System.out.println(nums1.get(0).getId() + "/" + nums1.get(0).getNum() + "/" + nums1.get(0).getVarious());
     }
 
     public void lesson5() {
