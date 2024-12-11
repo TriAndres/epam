@@ -23,5 +23,4 @@ public class Console {
     public static String getString() {
         return scanner.next();
     }
-
 }

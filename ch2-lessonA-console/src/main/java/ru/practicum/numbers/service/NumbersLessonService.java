@@ -3,7 +3,10 @@ package ru.practicum.numbers.service;
 import ru.practicum.numbers.file.NumbersFile;
 import ru.practicum.numbers.model.Numbers;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
@@ -100,6 +103,11 @@ public class NumbersLessonService {
             public Integer getVarious() {
                 return various;
             }
+
+            @Override
+            public String toString() {
+                return id + "/" + num + "/" + various;
+            }
         }
 
         List<Num> nums = new ArrayList<>();
@@ -122,12 +130,33 @@ public class NumbersLessonService {
                 .filter(i -> String.valueOf(i.getNum()).length() == size)
                 .sorted((a, b) -> b.getNum() - a.getNum())
                 .sorted((a, b) -> a.getVarious() - b.getVarious()).toList();
-        System.out.println(nums1.get(0).getId() + "/" + nums1.get(0).getNum() + "/" + nums1.get(0).getVarious());
+        System.out.println(nums1.get(0).toString());
     }
 
     public void lesson5() {
         System.out.println("5. Найти количество чисел, содержащих только четные цифры, а среди них —\n" +
                 " количество чисел с равным числом четных и нечетных цифр.");
+        int lineSize = 10;
+        show(numbersFile.findAll()
+                .stream()
+                .filter((i) -> {
+                            String[] line = String.valueOf(i.getNumber()).split("");
+                            int sum1 = 0;
+                            int sum2 = 0;
+                            for (String s : line) {
+                                if (Integer.parseInt(s) % 2 == 0) {
+                                    ++sum1;
+                                }
+                                if (Integer.parseInt(s) % 2 != 0) {
+                                    ++sum2;
+                                }
+                            }
+                            return sum1 == sum2 && i.getNumber() % 2 == 0;
+                        }
+                )
+                .toList()
+                , lineSize
+        );
     }
 
     public void lesson6() {
