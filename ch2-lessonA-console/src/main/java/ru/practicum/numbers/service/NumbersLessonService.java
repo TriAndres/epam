@@ -65,19 +65,6 @@ public class NumbersLessonService {
                 , lineSize);
     }
 
-    private void show(List<Numbers> list, int lineSize) {
-        int count = 0;
-        System.out.println("Вывод: id/number/length");
-        for (Numbers numbers : list) {
-            System.out.print("\t" + numbers.getId() + "/" + numbers.getNumber() + "/" + String.valueOf(numbers.getNumber()).length());
-            count++;
-            if (count == lineSize) {
-                System.out.println();
-                count = 0;
-            }
-        }
-    }
-
     public void lesson4() {
         System.out.println("4. Найти число, в котором число различных цифр минимально. Если таких\n" +
                 " чисел несколько, найти первое из них.(число из 6 цифр)");
@@ -138,23 +125,23 @@ public class NumbersLessonService {
                 " количество чисел с равным числом четных и нечетных цифр.");
         int lineSize = 10;
         show(numbersFile.findAll()
-                .stream()
-                .filter((i) -> {
-                            String[] line = String.valueOf(i.getNumber()).split("");
-                            int sum1 = 0;
-                            int sum2 = 0;
-                            for (String s : line) {
-                                if (Integer.parseInt(s) % 2 == 0) {
-                                    ++sum1;
+                        .stream()
+                        .filter((i) -> {
+                                    String[] line = String.valueOf(i.getNumber()).split("");
+                                    int sum1 = 0;
+                                    int sum2 = 0;
+                                    for (String s : line) {
+                                        if (Integer.parseInt(s) % 2 == 0) {
+                                            ++sum1;
+                                        }
+                                        if (Integer.parseInt(s) % 2 != 0) {
+                                            ++sum2;
+                                        }
+                                    }
+                                    return sum1 == sum2 && i.getNumber() % 2 == 0;
                                 }
-                                if (Integer.parseInt(s) % 2 != 0) {
-                                    ++sum2;
-                                }
-                            }
-                            return sum1 == sum2 && i.getNumber() % 2 == 0;
-                        }
-                )
-                .toList()
+                        )
+                        .toList()
                 , lineSize
         );
     }
@@ -162,6 +149,25 @@ public class NumbersLessonService {
     public void lesson6() {
         System.out.println("6. Найти число, цифры в котором идут в строгом порядке возрастания. Если\n" +
                 " таких чисел несколько, найти первое из них.");
+        List<Numbers> list = numbersFile.findAll()
+                        .stream()
+                        .filter((a) -> {
+                                    String[] line = String.valueOf(a.getNumber()).split("");
+                                    for (int i = 0; i < line.length - 1; i++) {
+                                        boolean flag = true;
+                                        for (int j = 1; j < line.length; j++) {
+                                            if (!(Integer.parseInt(line[i]) < Integer.parseInt(line[j]))) {
+                                                flag = false;
+                                                break;
+                                            }
+                                        }
+                                        return flag;
+                                    }
+                                    return false;
+                                }
+                        )
+                        .toList();
+        System.out.print("\t" + list.get(0).getId() + "/" + list.get(0).getNumber() + "/" + String.valueOf(list.get(0).getNumber()).length());
     }
 
     public void lesson7() {
@@ -177,5 +183,18 @@ public class NumbersLessonService {
     public void lesson9() {
         System.out.println("9. Найти корни квадратного уравнения. Параметры уравнения передавать\n" +
                 " с командной строкой.");
+    }
+
+    private void show(List<Numbers> list, int lineSize) {
+        int count = 0;
+        System.out.println("Вывод: id/number/length");
+        for (Numbers numbers : list) {
+            System.out.print("\t" + numbers.getId() + "/" + numbers.getNumber() + "/" + String.valueOf(numbers.getNumber()).length());
+            count++;
+            if (count == lineSize) {
+                System.out.println();
+                count = 0;
+            }
+        }
     }
 }
