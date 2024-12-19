@@ -20,6 +20,19 @@ public class Console {
         return num;
     }
 
+    public static Double getDouble() {
+        double num = 0;
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                num = scanner.nextDouble();
+                break;
+            } else {
+                scanner.nextLine();
+            }
+        }
+        return num;
+    }
+
     public static String getString() {
         return scanner.next();
     }

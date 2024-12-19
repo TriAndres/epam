@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static ru.practicum.console.Console.getDouble;
+
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
 
@@ -172,7 +174,8 @@ public class NumbersLessonService {
             System.out.print("\t" + list.get(0).getId() + "/" + list.get(0).getNumber() + "/" + String.valueOf(list.get(0).getNumber()).length());
         } else {
             System.out.println("Список пуст.");
-        };
+        }
+        ;
     }
 
     public void lesson7() {
@@ -208,11 +211,42 @@ public class NumbersLessonService {
     public void lesson8() {
         System.out.println("8. Среди чисел найти число-палиндром. Если таких чисел больше одного,\n" +
                 " найти второе.");
+        List<Numbers> list = numbersFile.findAll().stream()
+                .filter((a) -> {
+                            String num1 = String.valueOf(a.getNumber());
+                            StringBuilder num2 = new StringBuilder(num1).reverse();
+                            return num1.equalsIgnoreCase(num2.toString());
+                        }
+                ).toList();
+        if (!numbersFile.findAll().isEmpty()) {
+            System.out.println("Вывод: id/number/length");
+            System.out.print("\t" + list.get(1).getId() + "/" + list.get(1).getNumber() + "/" + String.valueOf(list.get(1).getNumber()).length());
+        } else {
+            System.out.println("Список пуст.");
+        }
     }
 
     public void lesson9() {
         System.out.println("9. Найти корни квадратного уравнения. Параметры уравнения передавать\n" +
                 " с командной строкой.");
+        System.out.println("ax^2 + bx + c = 0");
+        System.out.println("Введите а (1):");
+        double a = getDouble();
+        System.out.println("Введите b (-8):");
+        double b = getDouble();
+        System.out.println("Введите c (15):");
+        double c = getDouble();
+        double D = b * b - (4 * a * c);
+        if (D > 0) {
+            double x1 = (-b - Math.sqrt(D)) / (2 * a);
+            double x2 = (-b + Math.sqrt(D)) / (2 * a);
+            System.out.println("Корени уравнения: x1 = " + x1 + ", x2 = " + x2);
+        } else if (D == 0) {
+            double x = -b / (2 * a);
+            System.out.println("Уравнение имеет единственный корень: x = " + x);
+        } else {
+            System.out.println("Уравнение не имеет действительных корней!");
+        }
     }
 
     private void show(List<Numbers> list, int lineSize) {
