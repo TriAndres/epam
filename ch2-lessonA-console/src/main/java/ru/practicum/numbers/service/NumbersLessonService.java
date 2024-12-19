@@ -150,29 +150,59 @@ public class NumbersLessonService {
         System.out.println("6. Найти число, цифры в котором идут в строгом порядке возрастания. Если\n" +
                 " таких чисел несколько, найти первое из них.");
         List<Numbers> list = numbersFile.findAll()
-                        .stream()
-                        .filter((a) -> {
-                                    String[] line = String.valueOf(a.getNumber()).split("");
-                                    for (int i = 0; i < line.length - 1; i++) {
-                                        boolean flag = true;
-                                        for (int j = 1; j < line.length; j++) {
-                                            if (!(Integer.parseInt(line[i]) < Integer.parseInt(line[j]))) {
-                                                flag = false;
-                                                break;
-                                            }
-                                        }
-                                        return flag;
+                .stream()
+                .filter((a) -> {
+                            String[] line = String.valueOf(a.getNumber()).split("");
+                            for (int i = 0; i < line.length - 1; i++) {
+                                boolean flag = true;
+                                for (int j = 1; j < line.length; j++) {
+                                    if (!(Integer.parseInt(line[i]) < Integer.parseInt(line[j]))) {
+                                        flag = false;
+                                        break;
                                     }
-                                    return false;
                                 }
-                        )
-                        .toList();
-        System.out.print("\t" + list.get(0).getId() + "/" + list.get(0).getNumber() + "/" + String.valueOf(list.get(0).getNumber()).length());
+                                return flag;
+                            }
+                            return false;
+                        }
+                )
+                .toList();
+        if (!numbersFile.findAll().isEmpty()) {
+            System.out.println("Вывод: id/number/length");
+            System.out.print("\t" + list.get(0).getId() + "/" + list.get(0).getNumber() + "/" + String.valueOf(list.get(0).getNumber()).length());
+        } else {
+            System.out.println("Список пуст.");
+        };
     }
 
     public void lesson7() {
         System.out.println("7. Найти число, состоящее только из различных цифр. Если таких чисел не-\n" +
                 " сколько, найти первое из них.");
+        List<Numbers> list = numbersFile.findAll().stream()
+                .filter((a) -> {
+                            String[] line = String.valueOf(a.getNumber()).split("");
+                            for (int i = 0; i < line.length - 1; i++) {
+                                int count = 0;
+                                for (int j = 0; j < line.length; j++) {
+                                    if (Integer.parseInt(line[i]) == Integer.parseInt(line[j])) {
+                                        count++;
+                                        if (count > 1) {
+                                            return false;
+                                        }
+                                    }
+                                }
+                                return true;
+                            }
+                            return false;
+                        }
+                ).toList();
+        if (!numbersFile.findAll().isEmpty()) {
+            System.out.println("Вывод: id/number/length");
+            System.out.print("\t" + list.get(0).getId() + "/" + list.get(0).getNumber() + "/" + String.valueOf(list.get(0).getNumber()).length());
+        } else {
+            System.out.println("Список пуст.");
+        }
+
     }
 
     public void lesson8() {
