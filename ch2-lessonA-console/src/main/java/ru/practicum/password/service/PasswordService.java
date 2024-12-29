@@ -61,7 +61,6 @@ public class PasswordService {
         } else {
             System.out.println("Существует логин.");
         }
-
     }
 
     public void entrance() {

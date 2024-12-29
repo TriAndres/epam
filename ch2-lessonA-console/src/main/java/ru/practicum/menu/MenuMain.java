@@ -2,12 +2,36 @@ package ru.practicum.menu;
 
 import ru.practicum.numbers.menu.NumbersLessonMenu;
 import ru.practicum.numbers.menu.NumbersMenuImpl;
+import ru.practicum.password.model.Password;
 
 import static ru.practicum.console.Console.getInteger;
+import static ru.practicum.password.controller.PasswordController.passwordService;
 
 public class MenuMain {
 
     public void game() {
+        while (true) {
+            if (!passwordService().findAll().isEmpty()) {
+                for (Password password : passwordService().findAll()) {
+                    password.setRegistration(false);
+                }
+            }
+            System.out.println("\n\tВыбирите действие:" +
+                    "\n\t1 - регистрацмя" +
+                    "\n\t2 - вход в программу" +
+                    "\n\t0 - выход из программы");
+            int line = getInteger(-1);
+            if (line == 0) break;
+            if (line == 1) {
+                passwordService().registration();
+            } else if (line == 2) {
+                passwordService().entrance();
+            }
+
+            if (flag()) {
+                break;
+            }
+        }
         System.out.println("Меню цифр:");
         while (true) {
             int num = menu();
@@ -40,4 +64,15 @@ public class MenuMain {
                 break;
         }
     }
+
+    private boolean flag() {
+        for (Password password : passwordService().findAll()) {
+            if (password.getRegistration().equals(true)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

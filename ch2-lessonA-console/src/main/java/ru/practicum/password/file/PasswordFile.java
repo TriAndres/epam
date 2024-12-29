@@ -18,22 +18,35 @@ public class PasswordFile extends PasswordRepositoryImpl {
     public void saveF() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Password password : findAll()) {
+                //String time = "";
+//                if (!(password.getLocalDateTime() == null)) {
+//                   time = String.valueOf(password.getLocalDateTime());
+////                    LocalDateTime localDateTime = password.getLocalDateTime();
+////                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+////                    time = localDateTime.format(formatter);
+//                } else {
+//                    LocalDateTime localDateTime = LocalDateTime.now();//password.getLocalDateTime();
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//                    time = localDateTime.format(formatter);
+//                }
 
-                LocalDateTime localDateTime = password.getLocalDateTime();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                String time = localDateTime.format(formatter);
-
-                String interval = String.valueOf(password.getInterval());
+//
+//                String interval;
+//                if (password.getInterval() != null) {
+//                    String interval = String.valueOf(password.getInterval());
+//                } else {
+//                    interval = null;
+//                }
 
                 writer.write(
-                        String.format("%d/%s/%s/%s/%s/%s/%s"
+                        String.format("%d/%s/%s/%s\n"
                                 , password.getId()
                                 , password.getLogin()
                                 , password.getPassword()
                                 , password.getRegistration()
-                                , password.getName()
-                                , time
-                                , interval
+                                //, password.getName()
+                                //, time
+                                //, password.getInterval()
                         )
                 );
             }
@@ -84,14 +97,18 @@ public class PasswordFile extends PasswordRepositoryImpl {
             String line = null;
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split("/");
+
+                //String str = "2014-04-08 12:30";
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//                LocalDateTime dateTime = LocalDateTime.parse(row[5],formatter);
                 passwordFile.save(new Password(
                         Long.parseLong(row[0]),
                         row[1],
                         row[2],
-                        Boolean.valueOf(row[3]),
-                        row[4],
-                        LocalDateTime.parse(row[5]),
-                        Integer.parseInt(row[6])
+                        Boolean.valueOf(row[3])
+                        //row[4],
+                        //dateTime,//LocalDateTime.parse(row[5]),
+                        //Integer.parseInt(row[6])
                 ));
             }
         } catch (IOException e) {
