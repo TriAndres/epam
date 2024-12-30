@@ -7,7 +7,7 @@ public class Password {
     private String login;
     private String password;
     private Boolean registration;
-    //private String name;
+    private String name;
     //private LocalDateTime localDateTime;
     //private Integer interval;
 
@@ -28,8 +28,8 @@ public class Password {
     public Password(Long id,
                     String login,
                     String password,
-                    Boolean registration
-                    //String name,
+                    Boolean registration,
+                    String name//,
                     //LocalDateTime localDateTime,
                     //Integer interval
                     ) {
@@ -37,7 +37,7 @@ public class Password {
         this.login = login;
         this.password = password;
         this.registration = registration;
-        //this.name = name;
+        this.name = name;
         //this.localDateTime = localDateTime;
         //this.interval = interval;
     }
@@ -74,14 +74,14 @@ public class Password {
         this.registration = registration;
     }
 
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 //    public LocalDateTime getLocalDateTime() {
 //        return localDateTime;
 //    }

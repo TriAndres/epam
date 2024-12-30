@@ -4,43 +4,66 @@ import ru.practicum.numbers.menu.NumbersLessonMenu;
 import ru.practicum.numbers.menu.NumbersMenuImpl;
 import ru.practicum.password.model.Password;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static ru.practicum.console.Console.getInteger;
+import static ru.practicum.console.Console.getString;
 import static ru.practicum.password.controller.PasswordController.passwordService;
 
 public class MenuMain {
 
     public void game() {
-        while (true) {
+        boolean input = false;
+        while (true){
             if (!passwordService().findAll().isEmpty()) {
                 for (Password password : passwordService().findAll()) {
                     password.setRegistration(false);
                 }
             }
+
             System.out.println("\n\tВыбирите действие:" +
                     "\n\t1 - регистрацмя" +
                     "\n\t2 - вход в программу" +
                     "\n\t0 - выход из программы");
             int line = getInteger(-1);
-            if (line == 0) break;
-            if (line == 1) {
+            if (line == 0) {
+                break;
+            } else if (line == 1) {
                 passwordService().registration();
             } else if (line == 2) {
                 passwordService().entrance();
             }
-
             if (flag()) {
+                input = true;
                 break;
             }
         }
-        System.out.println("Меню цифр:");
-        while (true) {
-            int num = menu();
-            if (num == 0) break;
-            select(num);
+        ///////////////////////////////////////////////
+        /*
+        String name = "";
+        for (Password password : passwordService().findAll()) {
+            if (password.getRegistration().equals(true)) {
+                name = password.getName();
+            }
         }
-        System.out.println("Выход из меню цифр.");
-    }
+        if (name == null) {
+            System.out.println("Введите Ваше имя:");
+            name = getString();
 
+        }
+        */
+        ///////////////////////////////////////////////
+        if(input) {
+            System.out.println("Меню цифр:");
+            while (true) {
+                int num = menu();
+                if (num == 0) break;
+                select(num);
+            }
+            System.out.println("Выход из меню цифр.");
+        }
+    }
 
     private int menu() {
         System.out.println("\n\tВыбирите действие:" +
@@ -49,7 +72,6 @@ public class MenuMain {
                 "\n\t0 - выйти из программы.");
         return getInteger(-1);
     }
-
 
     private void select(int num) {
         switch (num) {
@@ -73,6 +95,5 @@ public class MenuMain {
         }
         return false;
     }
-
 
 }

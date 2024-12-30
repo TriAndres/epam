@@ -12,4 +12,8 @@ public class PasswordController {
     public static PasswordService passwordService() {
         return new PasswordService(passwordFile);
     }
+
+    public static  PasswordFile passwordFile() {
+        return passwordFile;
+    }
 }

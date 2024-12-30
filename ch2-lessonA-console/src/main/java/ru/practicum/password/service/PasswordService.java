@@ -26,6 +26,7 @@ public class PasswordService {
     public List<Password> findAll() {
         return passwordFile.findAll();
     }
+
     public void registration() {
         int lengthRegistration = 4;
         System.out.println("Введите логин (или 0 для выхода)");

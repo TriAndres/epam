@@ -39,12 +39,12 @@ public class PasswordFile extends PasswordRepositoryImpl {
 //                }
 
                 writer.write(
-                        String.format("%d/%s/%s/%s\n"
+                        String.format("%d/%s/%s/%s/%s\n"
                                 , password.getId()
                                 , password.getLogin()
                                 , password.getPassword()
                                 , password.getRegistration()
-                                //, password.getName()
+                                , password.getName()
                                 //, time
                                 //, password.getInterval()
                         )
@@ -105,8 +105,8 @@ public class PasswordFile extends PasswordRepositoryImpl {
                         Long.parseLong(row[0]),
                         row[1],
                         row[2],
-                        Boolean.valueOf(row[3])
-                        //row[4],
+                        Boolean.valueOf(row[3]),
+                        row[4]
                         //dateTime,//LocalDateTime.parse(row[5]),
                         //Integer.parseInt(row[6])
                 ));
