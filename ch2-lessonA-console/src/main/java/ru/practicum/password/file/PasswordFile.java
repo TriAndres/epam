@@ -5,7 +5,6 @@ import ru.practicum.password.repository.PasswordRepositoryImpl;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PasswordFile extends PasswordRepositoryImpl {
@@ -37,16 +36,16 @@ public class PasswordFile extends PasswordRepositoryImpl {
 //                } else {
 //                    interval = null;
 //                }
-
+                if (password.getInterval() == null) password.setInterval(0);
                 writer.write(
-                        String.format("%d/%s/%s/%s/%s\n"
+                        String.format("%d/%s/%s/%s/%s/%s/%s\n"
                                 , password.getId()
                                 , password.getLogin()
                                 , password.getPassword()
                                 , password.getRegistration()
                                 , password.getName()
-                                //, time
-                                //, password.getInterval()
+                                , password.getLocalDateTime()
+                                , String.valueOf(password.getInterval())
                         )
                 );
             }
@@ -98,17 +97,14 @@ public class PasswordFile extends PasswordRepositoryImpl {
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split("/");
 
-                //String str = "2014-04-08 12:30";
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//                LocalDateTime dateTime = LocalDateTime.parse(row[5],formatter);
                 passwordFile.save(new Password(
                         Long.parseLong(row[0]),
                         row[1],
                         row[2],
                         Boolean.valueOf(row[3]),
-                        row[4]
-                        //dateTime,//LocalDateTime.parse(row[5]),
-                        //Integer.parseInt(row[6])
+                        row[4],
+                        row[5],
+                        Integer.parseInt(row[6])
                 ));
             }
         } catch (IOException e) {

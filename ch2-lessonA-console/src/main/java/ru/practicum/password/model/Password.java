@@ -8,8 +8,8 @@ public class Password {
     private String password;
     private Boolean registration;
     private String name;
-    //private LocalDateTime localDateTime;
-    //private Integer interval;
+    private String localDateTime;
+    private Integer interval;
 
     public Password() {
     }
@@ -32,17 +32,17 @@ public class Password {
                     String login,
                     String password,
                     Boolean registration,
-                    String name//,
-                    //LocalDateTime localDateTime,
-                    //Integer interval
+                    String name,
+                    String localDateTime,
+                    Integer interval
                     ) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.registration = registration;
         this.name = name;
-        //this.localDateTime = localDateTime;
-        //this.interval = interval;
+        this.localDateTime = localDateTime;
+        this.interval = interval;
     }
 
     public Long getId() {
@@ -85,19 +85,19 @@ public class Password {
         this.name = name;
     }
 
-//    public LocalDateTime getLocalDateTime() {
-//        return localDateTime;
-//    }
-//
-//    public void setLocalDateTime(LocalDateTime localDateTime) {
-//        this.localDateTime = localDateTime;
-//    }
-//
-//    public Integer getInterval() {
-//        return interval;
-//    }
-//
-//    public void setInterval(Integer interval) {
-//        this.interval = interval;
-//    }
+    public String getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(String localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    public Integer getInterval() {
+        return interval;
+    }
+
+    public void setInterval(Integer interval) {
+        this.interval = interval;
+    }
 }

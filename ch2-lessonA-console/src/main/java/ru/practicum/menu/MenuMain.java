@@ -5,9 +5,7 @@ import ru.practicum.numbers.menu.NumbersMenuImpl;
 import ru.practicum.password.model.Password;
 
 import static ru.practicum.console.Console.getInteger;
-import static ru.practicum.console.Console.getString;
-import static ru.practicum.password.controller.PasswordController.passwordFile;
-import static ru.practicum.password.controller.PasswordController.passwordService;
+import static ru.practicum.password.controller.PasswordController.*;
 
 public class MenuMain {
 
@@ -36,14 +34,10 @@ public class MenuMain {
                 break;
             }
         }
-        Password ps = inProgram();
-        if (ps.getName().equals("null")) {
-            System.out.println("Введите Ваше имя:");
-            ps.setName(getString());
-            passwordFile().save(ps);
-        }
-        System.out.println(ps.getName());
-        if (inProgram().getRegistration()) {
+
+        passwordEmployee().getTask();
+
+        if (passwordEmployee().inProgram().getRegistration()) {
             while (true) {
                 int num = menu();
                 if (num == 0) break;
@@ -82,15 +76,5 @@ public class MenuMain {
             }
         }
         return false;
-    }
-
-    private Password inProgram() {
-        Password ps = new Password();
-        for (Password password : passwordService().findAll()) {
-            if (password.getRegistration().equals(true)) {
-                ps = password;
-            }
-        }
-        return ps;
     }
 }

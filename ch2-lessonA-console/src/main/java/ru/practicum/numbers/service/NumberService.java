@@ -18,7 +18,7 @@ public class NumberService {
             System.out.println("Введите длину из цифр:");
             int sizeLine = getInteger(0);
             for (Numbers numbers : numbersFile.findAll()) {
-                System.out.println(numbers.toString());
+                System.out.print("\t" + numbers.getId() + "/" + numbers.getNumber());
                 count++;
                 if (count == sizeLine) {
                     System.out.println();

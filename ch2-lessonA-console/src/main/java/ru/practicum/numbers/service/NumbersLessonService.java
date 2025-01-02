@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import static ru.practicum.console.Console.getDouble;
+import static ru.practicum.password.controller.PasswordController.passwordEmployee;
+
 
 public class NumbersLessonService {
     private final NumbersFile numbersFile;
@@ -28,6 +30,7 @@ public class NumbersLessonService {
                 "/" + String.valueOf(list.get(0).getNumber()).length());
         System.out.println("Cамое длинное число: " + list.get(list.size() - 1).getId() + "/" + list.get(list.size() - 1).getNumber() +
                 "/" + String.valueOf(list.get(list.size() - 1).getNumber()).length());
+        passwordEmployee().reminderTask();
     }
 
     public void lesson2() {
@@ -46,6 +49,7 @@ public class NumbersLessonService {
                         .sorted((a, b) -> b.getNumber() - a.getNumber())
                         .toList()
                 , lineSize);
+        passwordEmployee().reminderTask();
     }
 
     public void lesson3() {
@@ -65,6 +69,7 @@ public class NumbersLessonService {
                         .filter(i -> i.getNumber() < sum / numbersFile.findAll().size())
                         .toList()
                 , lineSize);
+        passwordEmployee().reminderTask();
     }
 
     public void lesson4() {
@@ -97,6 +102,7 @@ public class NumbersLessonService {
             public String toString() {
                 return id + "/" + num + "/" + various;
             }
+
         }
 
         List<Num> nums = new ArrayList<>();
@@ -120,6 +126,7 @@ public class NumbersLessonService {
                 .sorted((a, b) -> b.getNum() - a.getNum())
                 .sorted((a, b) -> a.getVarious() - b.getVarious()).toList();
         System.out.println(nums1.get(0).toString());
+        passwordEmployee().reminderTask();
     }
 
     public void lesson5() {
@@ -146,6 +153,7 @@ public class NumbersLessonService {
                         .toList()
                 , lineSize
         );
+        passwordEmployee().reminderTask();
     }
 
     public void lesson6() {
@@ -175,7 +183,7 @@ public class NumbersLessonService {
         } else {
             System.out.println("Список пуст.");
         }
-        ;
+        passwordEmployee().reminderTask();
     }
 
     public void lesson7() {
@@ -205,7 +213,7 @@ public class NumbersLessonService {
         } else {
             System.out.println("Список пуст.");
         }
-
+        passwordEmployee().reminderTask();
     }
 
     public void lesson8() {
@@ -224,6 +232,7 @@ public class NumbersLessonService {
         } else {
             System.out.println("Список пуст.");
         }
+        passwordEmployee().reminderTask();
     }
 
     public void lesson9() {
@@ -247,6 +256,7 @@ public class NumbersLessonService {
         } else {
             System.out.println("Уравнение не имеет действительных корней!");
         }
+        passwordEmployee().reminderTask();
     }
 
     private void show(List<Numbers> list, int lineSize) {
