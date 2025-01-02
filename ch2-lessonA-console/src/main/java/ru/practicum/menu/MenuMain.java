@@ -4,21 +4,19 @@ import ru.practicum.numbers.menu.NumbersLessonMenu;
 import ru.practicum.numbers.menu.NumbersMenuImpl;
 import ru.practicum.password.model.Password;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static ru.practicum.console.Console.getInteger;
 import static ru.practicum.console.Console.getString;
+import static ru.practicum.password.controller.PasswordController.passwordFile;
 import static ru.practicum.password.controller.PasswordController.passwordService;
 
 public class MenuMain {
 
     public void game() {
-        boolean input = false;
-        while (true){
+        while (true) {
             if (!passwordService().findAll().isEmpty()) {
                 for (Password password : passwordService().findAll()) {
                     password.setRegistration(false);
+                    passwordFile().save(password);
                 }
             }
 
@@ -35,33 +33,23 @@ public class MenuMain {
                 passwordService().entrance();
             }
             if (flag()) {
-                input = true;
                 break;
             }
         }
-        ///////////////////////////////////////////////
-        /*
-        String name = "";
-        for (Password password : passwordService().findAll()) {
-            if (password.getRegistration().equals(true)) {
-                name = password.getName();
-            }
-        }
-        if (name == null) {
+        Password ps = inProgram();
+        if (ps.getName().equals("null")) {
             System.out.println("Введите Ваше имя:");
-            name = getString();
-
+            ps.setName(getString());
+            passwordFile().save(ps);
         }
-        */
-        ///////////////////////////////////////////////
-        if(input) {
-            System.out.println("Меню цифр:");
+        System.out.println(ps.getName());
+        if (inProgram().getRegistration()) {
             while (true) {
                 int num = menu();
                 if (num == 0) break;
                 select(num);
             }
-            System.out.println("Выход из меню цифр.");
+            System.out.println("Выход из программы.");
         }
     }
 
@@ -96,4 +84,13 @@ public class MenuMain {
         return false;
     }
 
+    private Password inProgram() {
+        Password ps = new Password();
+        for (Password password : passwordService().findAll()) {
+            if (password.getRegistration().equals(true)) {
+                ps = password;
+            }
+        }
+        return ps;
+    }
 }

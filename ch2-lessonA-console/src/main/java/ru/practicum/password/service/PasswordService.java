@@ -29,23 +29,27 @@ public class PasswordService {
 
     public void registration() {
         int lengthRegistration = 4;
-        System.out.println("Введите логин (или 0 для выхода)");
+        System.out.println("Введите логин");
         while (true) {
             login = getString();
-            if (login.length() > lengthRegistration) {
+            if (login.equals("0")) {
+                break;
+            }
+            else if (login.length() > lengthRegistration) {
                 break;
             }
             System.out.println("Длина логина должна больше " + lengthRegistration + " символов");
         }
+        boolean flag = true;
         for (Password password : passwordFile.findAll()) {
-            if (!password.getLogin().equals(login)) {
+            if (password.getLogin().equals(login)) {
+                flag = false;
                 break;
             } else if ("0".equals(login)) {
                 break;
             }
         }
-
-        if (!login.equals("0")) {
+        if (!login.equals("0") && flag) {
             System.out.println("Введите пароль:");
             while (true) {
                 password = getString();
@@ -60,31 +64,35 @@ public class PasswordService {
             passwordFile.save(pp);
             System.out.println("Логин и пароль записан.");
         } else {
-            System.out.println("Существует логин.");
+            System.out.println("Выход из регистрации.");
         }
     }
 
     public void entrance() {
         System.out.println("Введите логинн:");
         login = getString();
+        boolean flag = false;
+        Password ps = new Password();
         for (Password password1 : passwordFile.findAll()) {
             if (password1.getLogin().equals(login)) {
-                System.out.println("Логин верно ввели.\nВведите пароль:");
-                password = getString();
-                if (password1.getPassword().equals(password)) {
-                    System.out.println("Пароль ввели верно.");
-                    pp = password1;
-                    pp.setRegistration(true);
-                    passwordFile.save(pp);
-                    break;
-                } else {
-                    System.out.println("Пароль введён неверно.");
-                    break;
-                }
-            } else {
-                System.out.println("Логин введён неверно.");
+                flag = true;
+                ps = password1;
                 break;
             }
+        }
+        if (flag) {
+            System.out.println("Логин верно ввели.\nВведите пароль:");
+            password = getString();
+            if (ps.getPassword().equals(password)) {
+                System.out.println("Пароль ввели верно.");
+                pp = ps;
+                pp.setRegistration(true);
+                passwordFile.save(pp);
+            } else {
+                System.out.println("Пароль введён неверно.");
+            }
+        } else {
+            System.out.println("Логин введён неверно..");
         }
     }
 

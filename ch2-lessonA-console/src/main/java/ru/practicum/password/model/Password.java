@@ -11,6 +11,9 @@ public class Password {
     //private LocalDateTime localDateTime;
     //private Integer interval;
 
+    public Password() {
+    }
+
     public Password(String login,
                     String password) {
         this.login = login;
