@@ -4,10 +4,10 @@ public class Password {
     private Long id;
     private String login;
     private String password;
-    private Boolean registration;
+    private String registration;
     private String name;
-    private String localDateTime;
-    private Integer interval;
+    private String localDateTame;
+    private String Interval;
 
     public Password() {
     }
@@ -15,18 +15,17 @@ public class Password {
     public Password(Long id,
                     String login,
                     String password,
-                    Boolean registration,
+                    String registration,
                     String name,
-                    String localDateTime,
-                    Integer interval
-                    ) {
+                    String localDateTame,
+                    String interval) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.registration = registration;
         this.name = name;
-        this.localDateTime = localDateTime;
-        this.interval = interval;
+        this.localDateTame = localDateTame;
+        Interval = interval;
     }
 
     public Long getId() {
@@ -53,11 +52,11 @@ public class Password {
         this.password = password;
     }
 
-    public Boolean getRegistration() {
+    public String getRegistration() {
         return registration;
     }
 
-    public void setRegistration(Boolean registration) {
+    public void setRegistration(String registration) {
         this.registration = registration;
     }
 
@@ -69,19 +68,19 @@ public class Password {
         this.name = name;
     }
 
-    public String getLocalDateTime() {
-        return localDateTime;
+    public String getLocalDateTame() {
+        return localDateTame;
     }
 
-    public void setLocalDateTime(String localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setLocalDateTame(String localDateTame) {
+        this.localDateTame = localDateTame;
     }
 
-    public Integer getInterval() {
-        return interval;
+    public String getInterval() {
+        return Interval;
     }
 
-    public void setInterval(Integer interval) {
-        this.interval = interval;
+    public void setInterval(String interval) {
+        Interval = interval;
     }
 }

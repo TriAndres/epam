@@ -17,25 +17,6 @@ public class PasswordFile extends PasswordRepositoryImpl {
     public void saveF() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Password password : findAll()) {
-                //String time = "";
-//                if (!(password.getLocalDateTime() == null)) {
-//                   time = String.valueOf(password.getLocalDateTime());
-////                    LocalDateTime localDateTime = password.getLocalDateTime();
-////                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-////                    time = localDateTime.format(formatter);
-//                } else {
-//                    LocalDateTime localDateTime = LocalDateTime.now();//password.getLocalDateTime();
-//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//                    time = localDateTime.format(formatter);
-//                }
-
-//
-//                String interval;
-//                if (password.getInterval() != null) {
-//                    String interval = String.valueOf(password.getInterval());
-//                } else {
-//                    interval = null;
-//                }
                 if (password.getInterval() == null) password.setInterval(0);
                 writer.write(
                         String.format("%d/%s/%s/%s/%s/%s/%s\n"

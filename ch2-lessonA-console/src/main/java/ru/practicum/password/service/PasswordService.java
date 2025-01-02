@@ -58,7 +58,7 @@ public class PasswordService {
                 }
                 System.out.println("Длина пароля должна больше " + lengthRegistration + " символов");
             }
-            pp = new Password(login, password);
+            pp = new Password(null,login, password,null,null,null,null);
             pp.setId(getNextId());
             pp.setRegistration(true);
             passwordFile.save(pp);
