@@ -1,4 +1,4 @@
-package ru.practicum.lesson;
+package ru.practicum.lesson.lesson;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package ru.practicum.lesson;
+package ru.practicum.lesson.lesson;
 
 public class Lesson3 {
     public static void main(String[] args) {
